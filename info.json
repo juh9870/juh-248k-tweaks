@@ -1,0 +1,24 @@
+{
+  "name": "juh-248k-tweaks",
+  "version": "1.0.0",
+  "title": "Juh's 248k tweaks",
+  "author": "juh9870",
+  "homepage": "https://github.com/juh9870/juh-248k-tweaks",
+  "description": "Juh9870's tweaks for 248k playthough",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base",
+    "juh-tweaks",
+    "248k-Redux-juh-temporary-fork",
+    "? larger-machines",
+    "? Krastorio2-spaced-out",
+    "? space-is-fake"
+  ],
+  "quality_required": false,
+  "rail_bridges_required": false,
+  "space_travel_required": false,
+  "spoiling_required": false,
+  "freezing_required": false,
+  "segmented_units_required": false,
+  "expansion_shaders_required": false
+}
