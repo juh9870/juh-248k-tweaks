@@ -138,6 +138,12 @@ if mods["um-standalone-foundry"] or mods["space-age"] then
 			top_left = "__Krastorio2Assets__/icons/items/enriched-iron.png",
 		})
 
+		data.raw["recipe"]["casting-steel"].hidden = false
+		data.raw["recipe"]["el_cast_pure_steel"].icons = api.build_icons_subscripts({
+			base = "__Krastorio2Assets__/icons/items/steel-plate.png",
+			top_left = "__Krastorio2Assets__/icons/items/coke.png",
+		})
+
 		local enrich_tech = data.raw["technology"]["kr-enriched-ores"]
 		table.insert(enrich_tech.effects, { type = "unlock-recipe", recipe = purify_copper.name })
 		table.insert(enrich_tech.effects, { type = "unlock-recipe", recipe = purify_iron.name })
