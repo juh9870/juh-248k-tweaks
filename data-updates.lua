@@ -128,13 +128,16 @@ if mods["space-age"] then
 		data.raw["recipe"]["fu_star_engine_caster_4"].localised_name = { "item-name.lithium-quartz" }
 		data.raw["item"]["el_lithium_battery"].localised_name = { "item-name.lithium-quartz-battery" }
 		data.raw["recipe"]["el_lithium_battery"].localised_name = { "item-name.lithium-quartz-battery" }
-		
+
 		local star_lithium = table.deepcopy(data.raw["recipe"]["fu_star_engine_caster_4"])
 		star_lithium.name = "fu_star_engine_caster_kr_lithium"
 		star_lithium.results[1].name = "kr-lithium"
 		star_lithium.localised_name = nil
-		data:extend({star_lithium})
-		table.insert(data.raw["technology"]["fu_star_engine_lithium_7_tech"].effects, { type = "unlock-recipe", recipe = star_lithium.name })
+		data:extend({ star_lithium })
+		table.insert(
+			data.raw["technology"]["fu_star_engine_lithium_7_tech"].effects,
+			{ type = "unlock-recipe", recipe = star_lithium.name }
+		)
 
 		api.hideRecipes({ "el_dirty_water_vent" })
 
