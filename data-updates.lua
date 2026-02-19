@@ -123,23 +123,56 @@ if mods["space-age"] then
 	table.insert(data.raw["technology"]["gr_circuit_tech"].prerequisites, "quantum-processor")
 
 	if is_krastorio then
+		api.hideRecipes({ "el_dirty_water_vent" })
+
 		data.raw["item"]["el_lithium"].localised_name = { "item-name.lithium-quartz" }
 		data.raw["recipe"]["el_lithium_ore"].localised_name = { "item-name.lithium-quartz" }
 		data.raw["recipe"]["fu_star_engine_caster_4"].localised_name = { "item-name.lithium-quartz" }
 		data.raw["item"]["el_lithium_battery"].localised_name = { "item-name.lithium-quartz-battery" }
 		data.raw["recipe"]["el_lithium_battery"].localised_name = { "item-name.lithium-quartz-battery" }
+		data.raw["recipe"]["el_lithium_basic_battery"].localised_name = { "recipe-name.lithium-quart-basic-battery" }
+		data.raw["recipe"]["el_lithium_basic_battery"].icons = api.build_icons_subscripts({
+			base = data.raw["item"]["battery"].icon,
+			top_left = data.raw["item"]["el_lithium"].icon,
+		})
 
 		local star_lithium = table.deepcopy(data.raw["recipe"]["fu_star_engine_caster_4"])
 		star_lithium.name = "fu_star_engine_caster_kr_lithium"
 		star_lithium.results[1].name = "kr-lithium"
 		star_lithium.localised_name = nil
+		star_lithium.icons = api.build_icons_subscripts({
+			base = data.raw["item"]["kr-lithium"].icon,
+			top_left = data.raw["fluid"]["fu_lithium_7"].icon,
+		})
 		data:extend({ star_lithium })
 		table.insert(
 			data.raw["technology"]["fu_star_engine_lithium_7_tech"].effects,
 			{ type = "unlock-recipe", recipe = star_lithium.name }
 		)
-
-		api.hideRecipes({ "el_dirty_water_vent" })
+		data.raw["recipe"]["fu_star_engine_caster_1"].icons = api.build_icons_subscripts({
+			base = data.raw["item"]["iron-plate"].icon,
+			top_left = data.raw["fluid"]["fu_iron"].icon,
+		})
+		data.raw["recipe"]["fu_star_engine_caster_2"].icons = api.build_icons_subscripts({
+			base = data.raw["item"]["copper-plate"].icon,
+			top_left = data.raw["fluid"]["fu_copper"].icon,
+		})
+		data.raw["recipe"]["fu_star_engine_caster_3"].icons = api.build_icons_subscripts({
+			base = data.raw["item"]["sulfur"].icon,
+			top_left = data.raw["fluid"]["fu_sulfur"].icon,
+		})
+		data.raw["recipe"]["fu_star_engine_caster_4"].icons = api.build_icons_subscripts({
+			base = data.raw["item"]["el_lithium"].icon,
+			top_left = data.raw["fluid"]["fu_lithium_7"].icon,
+		})
+		data.raw["recipe"]["fu_star_engine_caster_5"].icons = api.build_icons_subscripts({
+			base = data.raw["item"]["uranium-235"].icon,
+			top_left = data.raw["fluid"]["fu_uranium_235"].icon,
+		})
+		data.raw["recipe"]["fu_star_engine_caster_6"].icons = api.build_icons_subscripts({
+			base = data.raw["item"]["uranium-238"].icon,
+			top_left = data.raw["fluid"]["fu_uranium_238"].icon,
+		})
 
 		local cast_steel = data.raw["recipe"]["el_cast_pure_steel"]
 		cast_steel.ingredients = {
