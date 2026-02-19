@@ -1,6 +1,7 @@
 local api = require("__juh-tweaks__/api")
 
-if mods["um-standalone-foundry"] or mods["space-age"] then
+if mods["space-age"] then
+	local is_krastorio = mods["Krastorio2-spaced-out"]
 	local replacements = {
 		["el_arc_pure_iron"] = { name = "molten-iron", amountMult = 0.1 },
 		["el_arc_pure_copper"] = { name = "molten-copper", amountMult = 0.1 },
@@ -11,9 +12,19 @@ if mods["um-standalone-foundry"] or mods["space-age"] then
 		["fi_arc_titan"] = { amountMult = 0.1 },
 		["fu_arc_pure_lead"] = { amountMult = 0.1 },
 	}
+
+	if is_krastorio then
+		replacements["el_dirty_water"] = { name = "kr-dirty-water" }
+	end
+
 	for _, recipeData in pairs(data.raw["recipe"]) do
 		api.patchRecipe(recipeData, replacements)
 	end
+
+	api.patchRecipes(
+		{ "supercapacitor", "personal-roboport-equipment" },
+		{ ["battery"] = { name = "el_lithium_battery" } }
+	)
 
 	local recipe_category_conversions = {
 		["electronics"] = {
@@ -111,7 +122,22 @@ if mods["um-standalone-foundry"] or mods["space-age"] then
 	}
 	table.insert(data.raw["technology"]["gr_circuit_tech"].prerequisites, "quantum-processor")
 
-	if mods["Krastorio2-spaced-out"] then
+	if is_krastorio then
+		data.raw["item"]["el_lithium"].localised_name = { "item-name.lithium-quartz" }
+		data.raw["recipe"]["el_lithium_ore"].localised_name = { "item-name.lithium-quartz" }
+		data.raw["recipe"]["fu_star_engine_caster_4"].localised_name = { "item-name.lithium-quartz" }
+		data.raw["item"]["el_lithium_battery"].localised_name = { "item-name.lithium-quartz-battery" }
+		data.raw["recipe"]["el_lithium_battery"].localised_name = { "item-name.lithium-quartz-battery" }
+		
+		local star_lithium = table.deepcopy(data.raw["recipe"]["fu_star_engine_caster_4"])
+		star_lithium.name = "fu_star_engine_caster_kr_lithium"
+		star_lithium.results[1].name = "kr-lithium"
+		star_lithium.localised_name = nil
+		data:extend({star_lithium})
+		table.insert(data.raw["technology"]["fu_star_engine_lithium_7_tech"].effects, { type = "unlock-recipe", recipe = star_lithium.name })
+
+		api.hideRecipes({ "el_dirty_water_vent" })
+
 		local cast_steel = data.raw["recipe"]["el_cast_pure_steel"]
 		cast_steel.ingredients = {
 			{ type = "fluid", name = "molten-iron", amount = 100 },
