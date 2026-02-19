@@ -9,7 +9,7 @@
   "dependencies": [
     "base",
     "juh-tweaks",
-    "248k-Redux-juh-temporary-fork",
+    "248k-Redux",
     "? larger-machines",
     "? Krastorio2-spaced-out",
     "? space-is-fake"
