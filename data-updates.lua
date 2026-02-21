@@ -123,7 +123,7 @@ if mods["space-age"] then
 	table.insert(data.raw["technology"]["gr_circuit_tech"].prerequisites, "quantum-processor")
 
 	if is_krastorio then
-		api.hideRecipes({ "el_dirty_water_vent" })
+		api.hideRecipes({ "el_dirty_water_vent", "el_cast_pure_steel" })
 
 		data.raw["item"]["el_lithium"].localised_name = { "item-name.lithium-quartz" }
 		data.raw["recipe"]["el_lithium_ore"].localised_name = { "item-name.lithium-quartz" }
@@ -174,13 +174,6 @@ if mods["space-age"] then
 			top_left = data.raw["fluid"]["fu_uranium_238"].icon,
 		})
 
-		local cast_steel = data.raw["recipe"]["el_cast_pure_steel"]
-		cast_steel.ingredients = {
-			{ type = "fluid", name = "molten-iron", amount = 100 },
-			{ type = "item", name = "kr-coke", amount = 2 },
-		}
-		cast_steel.results = { { type = "item", name = "steel-plate", amount = 5 } }
-
 		local purify_copper = table.deepcopy(data.raw["recipe"]["el_purify_copper"])
 		purify_copper.name = "el_purify_enriched_copper"
 		purify_copper.localised_name = { "item-name.kr-enriched-copper" }
@@ -201,10 +194,6 @@ if mods["space-age"] then
 		})
 
 		data.raw["recipe"]["casting-steel"].hidden = false
-		data.raw["recipe"]["el_cast_pure_steel"].icons = api.build_icons_subscripts({
-			base = "__Krastorio2Assets__/icons/items/steel-plate.png",
-			top_left = "__Krastorio2Assets__/icons/items/coke.png",
-		})
 
 		local enrich_tech = data.raw["technology"]["kr-enriched-ores"]
 		table.insert(enrich_tech.effects, { type = "unlock-recipe", recipe = purify_copper.name })
