@@ -96,6 +96,13 @@ if mods["space-age"] then
 	}
 	table.insert(data.raw["technology"]["gr_circuit_tech"].prerequisites, "quantum-processor")
 
+	data.raw["fluid"]["el_arc_pure_aluminum"].icon = "__juh-248k-tweaks__/graphics/icons/fluid/molten-aluminum.png"
+	data.raw["fluid"]["fi_arc_gold"].icon = "__juh-248k-tweaks__/graphics/icons/fluid/molten-gold.png"
+	data.raw["fluid"]["fi_arc_neodym"].icon = "__juh-248k-tweaks__/graphics/icons/fluid/molten-neodym.png"
+	data.raw["fluid"]["fi_arc_titan"].icon = "__juh-248k-tweaks__/graphics/icons/fluid/molten-titan.png"
+	data.raw["fluid"]["fu_arc_pure_lead"].icon = "__juh-248k-tweaks__/graphics/icons/fluid/molten-lead.png"
+	data.raw["fluid"]["fi_arc_glass"].icon = "__juh-248k-tweaks__/graphics/icons/fluid/molten-glass.png"
+
 	if is_krastorio then
 		api.hideRecipes({ "el_dirty_water_vent", "el_cast_pure_steel" })
 

@@ -14,9 +14,9 @@
     "? Krastorio2-spaced-out",
     "? space-is-fake"
   ],
+  "space_travel_required": true,
   "quality_required": false,
   "rail_bridges_required": false,
-  "space_travel_required": false,
   "spoiling_required": false,
   "freezing_required": false,
   "segmented_units_required": false,
