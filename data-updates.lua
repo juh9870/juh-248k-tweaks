@@ -60,7 +60,7 @@ if mods["space-age"] then
 	table.insert(data.raw["technology"]["electromagnetic-plant"].prerequisites, "fu_magnet_tech")
 	data.raw["recipe"]["electromagnetic-plant"].ingredients = {
 		{ type = "item", name = "fi_energy_crystal", amount = 30 },
-		{ type = "item", name = "fu_magnet", amount = 10 },
+		{ type = "item", name = "fu_materials_magnet", amount = 10 },
 		{ type = "item", name = "processing-unit", amount = 50 },
 		{ type = "item", name = "holmium-plate", amount = 150 },
 		{ type = "item", name = "refined-concrete", amount = 50 },
