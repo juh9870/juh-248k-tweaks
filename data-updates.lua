@@ -26,32 +26,6 @@ if mods["space-age"] then
 		{ ["battery"] = { name = "el_lithium_battery" } }
 	)
 
-	local recipe_category_conversions = {
-		["electronics"] = {
-			"fi_modules_productivity_1",
-			"fi_modules_productivity_2",
-			"fi_modules_productivity_3",
-			"fi_modules_productivity_4",
-			"fi_modules_productivity_5",
-			"fi_modules_productivity_6",
-			"fi_modules_core",
-			"gr_gold_wire",
-		},
-		["electronics-with-fluid"] = {
-			"gr_circuit",
-		},
-		["crafting-with-fluid-or-metallurgy"] = {
-			"el_ceramic",
-			"fi_ceramic",
-		},
-	}
-
-	for catName, recipes in pairs(recipe_category_conversions) do
-		for _, recipeName in pairs(recipes) do
-			data.raw["recipe"][recipeName].category = catName
-		end
-	end
-
 	local assemblerCategories = data.raw["assembling-machine"]["assembling-machine-3"].crafting_categories
 
 	for _, machineId in pairs({ "fi_crafter_entity", "gr_crafter_entity", "fi_crafter", "gr_crafter" }) do

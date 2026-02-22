@@ -26,14 +26,42 @@ if mods["larger-machines"] then
 	})
 end
 
-if mods["Krastorio2-spaced-out"] then
-	data.raw["lab"]["fu_lab"].science_pack_drain_rate_percent = 75
-	data.raw["lab"]["fu_lab"].inputs = data.raw["lab"]["kr-advanced-lab"].inputs
+if mods["space-age"] then
+	local recipe_category_conversions = {
+		["electronics"] = {
+			"fi_modules_productivity_1",
+			"fi_modules_productivity_2",
+			"fi_modules_productivity_3",
+			"fi_modules_productivity_4",
+			"fi_modules_productivity_5",
+			"fi_modules_productivity_6",
+			"fi_modules_core",
+			"gr_gold_wire",
+		},
+		["electronics-with-fluid"] = {
+			"gr_circuit",
+		},
+		["crafting-with-fluid-or-metallurgy"] = {
+			"el_ceramic",
+			"fi_ceramic",
+		},
+	}
 
-	if mods["space-is-fake"] then
-		local sing_tech_recipe = data.raw["recipe"]["kr-singularity-tech-card"]
-		table.insert(sing_tech_recipe.ingredients, { type = "item", name = "gr_magnet", amount = 1 })
-		local sing_tech_recipe_cooled = data.raw["recipe"]["kr-singularity-tech-card-cooling"]
-		table.insert(sing_tech_recipe_cooled.ingredients, { type = "item", name = "gr_magnet", amount = 1 })
+	for catName, recipes in pairs(recipe_category_conversions) do
+		for _, recipeName in pairs(recipes) do
+			data.raw["recipe"][recipeName].category = catName
+		end
+	end
+
+	if mods["Krastorio2-spaced-out"] then
+		data.raw["lab"]["fu_lab"].science_pack_drain_rate_percent = 75
+		data.raw["lab"]["fu_lab"].inputs = data.raw["lab"]["kr-advanced-lab"].inputs
+
+		if mods["space-is-fake"] then
+			local sing_tech_recipe = data.raw["recipe"]["kr-singularity-tech-card"]
+			table.insert(sing_tech_recipe.ingredients, { type = "item", name = "gr_magnet", amount = 1 })
+			local sing_tech_recipe_cooled = data.raw["recipe"]["kr-singularity-tech-card-cooling"]
+			table.insert(sing_tech_recipe_cooled.ingredients, { type = "item", name = "gr_magnet", amount = 1 })
+		end
 	end
 end
