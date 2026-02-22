@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.2
+Date: 2026-02-22
+  Bugfixes:
+    - change magnet in EM plant recipe to material
+    - move recipe categories to final fixes
+  Graphics:
+    - icons and colors for molten metals
+---------------------------------------------------------------------------------------------------
 Version: 1.3.1
 Date: 2026-02-21
   Balancing:
